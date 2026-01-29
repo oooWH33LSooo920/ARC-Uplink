@@ -1,0 +1,102 @@
+{
+  "Spaceport Container Storage Key": {
+    "map": "The Spaceport",
+    "building": "Container Storage",
+    "floor": "Top Floor",
+    "coordinates": [-1234.6, 789.0],
+    "lootTier": 4,
+    "loot": [
+      "High-tier crates",
+      "Weapon mods",
+      "Blueprints"
+    ],
+    "danger": "High",
+    "recommendedRoute": "Approach from the northeast side, use upper catwalks to avoid open sightlines.",
+    "notes": "Popular PvP hotspot; expect campers near the stairwell."
+  },
+  "Dam Control Center Tower Key": {
+    "map": "Dam Battlegrounds",
+    "building": "Control Center Tower",
+    "floor": "Top Floor",
+    "coordinates": [512.3, -240.8],
+    "lootTier": 3,
+    "loot": [
+      "Medium-tier crates",
+      "Ammo",
+      "Attachments"
+    ],
+    "danger": "Medium",
+    "recommendedRoute": "Use the zipline from the south side to minimize exposure.",
+    "notes": "Good mid-game stop if you’re rotating through the southeast dam area."
+  },
+  "Stella Montis Archives Key": {
+    "map": "Stella Montis",
+    "building": "Archives",
+    "floor": "Main Floor",
+    "coordinates": [98.1, 430.2],
+    "lootTier": 5,
+    "loot": [
+      "Epic crates",
+      "High-value blueprints",
+      "Rare materials"
+    ],
+    "danger": "High",
+    "recommendedRoute": "Enter from the west corridor, clear side rooms first, then push into the main archive hall.",
+    "notes": "One of the best PvE loot rooms; worth prioritizing if you have the key."
+  },
+  "Raider Hatch Key": {
+    "map": "Various",
+    "building": "Hatch",
+    "floor": null,
+    "coordinates": [0.0, 0.0],
+    "lootTier": 1,
+    "loot": [],
+    "danger": "Medium",
+    "recommendedRoute": "Check your map for hatch locations.",
+    "notes": "Can be purchased, crafted, quest reward, or looted from players. Used for quick extraction."
+  },
+  "Dam Surveillance Key": {
+    "map": "Dam Battlegrounds",
+    "building": "Water Treatment Control",
+    "floor": "Main Floor",
+    "coordinates": [0.0, 0.0],
+    "lootTier": 2,
+    "loot": [],
+    "danger": "High",
+    "recommendedRoute": "Southwestern side of the map.",
+    "notes": "Inside Water Treatment Control building."
+  },
+  "Dam Staff Room Key": {
+    "map": "Dam Battlegrounds",
+    "building": "Staff Room",
+    "floor": null,
+    "coordinates": [0.0, 0.0],
+    "lootTier": 2,
+    "loot": [],
+    "danger": "Medium",
+    "recommendedRoute": "Near the Control Tower.",
+    "notes": "Unlocks a staff room near the Control Tower."
+  },
+  "Dam Testing Annex Key": {
+    "map": "Dam Battlegrounds",
+    "building": "Testing Annex",
+    "floor": null,
+    "coordinates": [0.0, 0.0],
+    "lootTier": 2,
+    "loot": [],
+    "danger": "Medium",
+    "recommendedRoute": "Southeastern corner of the Dam Battlegrounds.",
+    "notes": "Use on one of two locked doors to loot the room."
+  },
+  "Spaceport Ground Control Key": {
+    "map": "The Spaceport",
+    "building": "Ground Control",
+    "floor": null,
+    "coordinates": [0.0, 0.0],
+    "lootTier": 2,
+    "loot": [],
+    "danger": "High",
+    "recommendedRoute": "Control tower near center of the map, a little to the west.",
+    "notes": "Guarded by ARC units."
+  }
+}

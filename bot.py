@@ -316,17 +316,34 @@ async def help_slash(interaction: discord.Interaction):
     await interaction.response.send_message(help_text, ephemeral=True)
 
 async def load_cogs():
-    try:
-        # Assign the async channel settings DB to bot.db before loading the cog
-        bot.db = ChannelSettingsDB()
-        await bot.load_extension('welcome_handler')
-        print('WelcomeHandler cog loaded.')
-
-        await bot.load_extension('modules.quests.quest_cog')
-        print('QuestCommands cog loaded.')
-
-    except Exception as e:
-        print(f'Failed to load cog: {e}')
+    import importlib.util
+    import pathlib
+    bot.db = ChannelSettingsDB()
+    cogs_loaded = 0
+    base_path = pathlib.Path(__file__).parent / "modules"
+    # Only load files ending with _cog.py as cogs
+    for py_file in base_path.rglob("*_cog.py"):
+        if "__pycache__" in py_file.parts:
+            continue
+        rel_path = py_file.relative_to(pathlib.Path(__file__).parent)
+        module = str(rel_path.with_suffix("")).replace("/", ".")
+        try:
+            await bot.load_extension(module)
+            print(f"Loaded cog: {module}")
+            cogs_loaded += 1
+        except Exception as e:
+            print(f"Failed to load cog {module}: {e}")
+    # Load any top-level cogs (e.g. welcome_handler.py)
+    for py_file in pathlib.Path(__file__).parent.glob("*.py"):
+        if py_file.name.endswith("_handler.py"):
+            module = py_file.stem
+            try:
+                await bot.load_extension(module)
+                print(f"Loaded cog: {module}")
+                cogs_loaded += 1
+            except Exception as e:
+                print(f"Failed to load cog {module}: {e}")
+    print(f"Total cogs loaded: {cogs_loaded}")
 
 if __name__ == '__main__':
     if not TOKEN:
