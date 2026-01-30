@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Dam Battleground",
+    "url": "https://arctracker.io/maps/dam-battleground",
+    "image": "https://arctracker.io/_next/image?url=%2Fmaps%2Fdam-battleground.jpg&w=1200&q=75",
+    "points_of_interest": [
+      "Control Center Tower",
+      "Water Treatment Control",
+      "Testing Annex",
+      "Staff Room"
+    ],
+    "events": [
+      "Night Raid",
+      "Harvester"
+    ],
+    "keys": [
+      "Dam Control Center Tower Key",
+      "Dam Surveillance Key",
+      "Dam Staff Room Key",
+      "Dam Testing Annex Key"
+    ]
+  },
+  {
+    "name": "Spaceport",
+    "url": "https://arctracker.io/maps/the-spaceport",
+    "image": "https://arctracker.io/_next/image?url=%2Fmaps%2Fthe-spaceport.jpg&w=1200&q=75",
+    "points_of_interest": [
+      "Container Storage",
+      "Ground Control"
+    ],
+    "events": [
+      "Night Raid"
+    ],
+    "keys": [
+      "Spaceport Container Storage Key",
+      "Spaceport Ground Control Key"
+    ]
+  },
+  {
+    "name": "Buried City",
+    "url": "https://arctracker.io/maps/buried-city",
+    "image": "https://arctracker.io/_next/image?url=%2Fmaps%2Fburied-city.jpg&w=1200&q=75",
+    "points_of_interest": [
+      "Town Hall",
+      "Hospital"
+    ],
+    "events": [],
+    "keys": []
+  },
+  {
+    "name": "The Blue Gate",
+    "url": "https://arctracker.io/maps/blue-gate",
+    "image": "https://arctracker.io/_next/image?url=%2Fmaps%2Fblue-gate.jpg&w=1200&q=75",
+    "points_of_interest": [
+      "Security Wing",
+      "Village"
+    ],
+    "events": [],
+    "keys": []
+  },
+  {
+    "name": "Stella Montis",
+    "url": "https://arctracker.io/maps/stella-montis",
+    "image": "https://arctracker.io/_next/image?url=%2Fmaps%2Fstella-montis.jpg&w=1200&q=75",
+    "points_of_interest": [
+      "Archives"
+    ],
+    "events": [],
+    "keys": [
+      "Stella Montis Archives Key"
+    ]
+  }
+]

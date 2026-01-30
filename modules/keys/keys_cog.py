@@ -23,6 +23,18 @@ DANGER_COLORS = {
 class KeyLookup(commands.Cog):
     KEY_CHANNEL_PATH = "modules/keys/key_channel.json"
 
+    @app_commands.command(name="unsetkeychannel", description="Disable ARC Key info channel for this server.")
+    @app_commands.checks.has_permissions(administrator=True)
+    async def unset_key_channel(self, interaction: discord.Interaction):
+        key_channels = self.load_key_channel()
+        guild_id = str(interaction.guild.id)
+        if guild_id in key_channels:
+            del key_channels[guild_id]
+            self.save_key_channel(key_channels)
+            await interaction.response.send_message("ARC Key info channel has been disabled for this server.", ephemeral=True)
+        else:
+            await interaction.response.send_message("No ARC Key info channel was set for this server.", ephemeral=True)
+
     def load_key_channel(self):
         try:
             with open(self.KEY_CHANNEL_PATH, "r", encoding="utf-8") as f:
@@ -162,6 +174,7 @@ class KeyLookup(commands.Cog):
         ][:25]
 
         return matches
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(KeyLookup(bot))

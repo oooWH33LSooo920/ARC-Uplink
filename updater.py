@@ -59,7 +59,9 @@ class LiveEventsUpdater:
     async def update_message(self):
         channel = self.bot.get_channel(self.channel_id)
         if not channel:
-            print('Channel not found or not set.')
+            if not hasattr(self, '_channel_warned') or not self._channel_warned:
+                print('Channel not found or not set.')
+                self._channel_warned = True
             return
         try:
             current, upcoming = fetch_live_events()
@@ -97,7 +99,7 @@ class LiveEventsUpdater:
             self.task.start()
 from weekly_trials import fetch_weekly_trials, build_weekly_trials_embed
 
-class WeeklyRotationUpdater:
+class WeeklyTrialsUpdater:
     def __init__(self, bot, channel_id, label="ARC Weekly Trials", reset_hour=10, reset_minute=0, reset_weekday=0):
         self.bot = bot
         self.channel_id = channel_id
@@ -130,15 +132,18 @@ class WeeklyRotationUpdater:
         return next_reset
 
     async def update_message(self):
+        print(f"[WeeklyTrialsUpdater] update_message called for channel {self.channel_id}")
         channel = self.bot.get_channel(self.channel_id)
         if not channel:
-            print('Channel not found or not set.')
+            if not hasattr(self, '_weekly_trials_warned') or not self._weekly_trials_warned:
+                print(f'[WeeklyTrialsUpdater] Channel {self.channel_id} not found or not set.')
+                self._weekly_trials_warned = True
             return
         try:
             trials = fetch_weekly_trials()
             embed = build_weekly_trials_embed(trials) if trials else None
             if not embed:
-                print('Could not build weekly trials embed.')
+                print('[WeeklyTrialsUpdater] Could not build weekly trials embed.')
                 return
             if self.static_message_id is None:
                 self.static_message_id = await self.find_existing_message(channel)
@@ -146,15 +151,17 @@ class WeeklyRotationUpdater:
                 try:
                     msg = await channel.fetch_message(self.static_message_id)
                     await msg.edit(embed=embed)
+                    print(f"[WeeklyTrialsUpdater] Edited existing message {self.static_message_id}")
                     return
                 except discord.NotFound:
                     self.static_message_id = None
                 except Exception as e:
-                    print(f"Error editing weekly trials message: {e}")
+                    print(f"[WeeklyTrialsUpdater] Error editing weekly trials message: {e}")
             sent = await channel.send(embed=embed)
             self.static_message_id = sent.id
+            print(f"[WeeklyTrialsUpdater] Sent new weekly trials message {self.static_message_id}")
         except Exception as e:
-            print(f"Error updating weekly trials message: {e}")
+            print(f"[WeeklyTrialsUpdater] Error updating weekly trials message: {e}")
 
     def start(self):
         if not self.task.is_running():

@@ -53,7 +53,7 @@ def build_weekly_trials_embed(trials):
     )
     embed.set_author(name="ARC Uplink")
     # Add thumbnail (same as events)
-    embed.set_thumbnail(url="https://cdn-icons-png.flaticon.com/512/25/25231.png")
+    embed.set_thumbnail(url="https://i.postimg.cc/RV6vwTdW/image.webp")
     now_utc = datetime.utcnow().replace(tzinfo=pytz.utc)
     days_ahead = (0 - now_utc.weekday() + 7) % 7
     if days_ahead == 0 and now_utc.hour >= 10:

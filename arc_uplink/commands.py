@@ -23,6 +23,18 @@ class ExpeditionCommands(commands.Cog):
         self.guild_channels[guild_id] = channel_id
         await interaction.response.send_message(f"Expedition channel set to <#{channel_id}> for this server.", ephemeral=True)
 
+    @discord.app_commands.command(name="unsetexpedition", description="Unset the expedition channel for this server.")
+    async def unset_expedition_slash(self, interaction: discord.Interaction):
+        if not interaction.user.guild_permissions.administrator:
+            await interaction.response.send_message("You need administrator permissions to use this command.", ephemeral=True)
+            return
+        guild_id = interaction.guild.id
+        if guild_id in self.guild_channels:
+            del self.guild_channels[guild_id]
+            await interaction.response.send_message("Expedition channel unset for this server.", ephemeral=True)
+        else:
+            await interaction.response.send_message("No expedition channel is set for this server.", ephemeral=True)
+
     def get_channel_for_guild(self, guild_id):
         return self.guild_channels.get(guild_id, None)
 
@@ -32,3 +44,4 @@ def setup(bot: commands.Bot):
     # Register slash command with the app command tree
     if hasattr(bot, 'tree'):
         bot.tree.add_command(cog.set_expedition_slash)
+        bot.tree.add_command(cog.unset_expedition_slash)
